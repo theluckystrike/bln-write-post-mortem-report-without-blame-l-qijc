@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How To Write A Post Mortem Report Without Blame Language</title>
+<meta name="description" content="Learn to write post-mortem reports that fix systems, not people — with neutral language, Five Whys, and clear action items.">
+<link rel="canonical" href="https://belikenative.com/write-post-mortem-report-without-blame-language/">
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:720px;margin:40px auto;padding:0 20px;line-height:1.7;color:#333;background:#fff}
+h1{font-size:1.8em;line-height:1.3;margin-bottom:8px}
+h2{font-size:1.4em;margin-top:32px}
+h3{font-size:1.2em;margin-top:24px}
+p{margin:16px 0}
+a{color:#2563eb;text-decoration:none}
+a:hover{text-decoration:underline}
+ul{padding-left:24px}
+li{margin:8px 0}
+.source{color:#666;font-size:14px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee}
+.footer{margin-top:40px;padding-top:20px;border-top:1px solid #eee;color:#666;font-size:14px}
+</style>
+</head>
+<body>
+<article>
+<h1>How To Write A Post Mortem Report Without Blame Language</h1>
+<div class="source">Originally published at <a href="https://belikenative.com/write-post-mortem-report-without-blame-language/">belikenative.com/write-post-mortem-report-without-blame-language</a></div>
+<p>I'll never forget my first post-mortem meeting. I was a junior engineer, and the server had crashed at 3 AM during a holiday sale. The report started with "John deployed faulty code without proper review." John was sitting right next to me. The tension in the room was thick enough to cut with a knife.</p>
+<p>That report didn't fix anything. It just made everyone defensive.</p>
+<p>Here's the thing: post-mortems aren't about pointing fingers. They're about building better systems. When you use blame language, you kill curiosity. People stop asking "why did this happen?" and start asking "how do I avoid getting blamed?" That's the opposite of what you want.</p>
+<p>Let me show you how to write post-mortems that actually work.</p>
+<h2>Why Blame Language Fails</h2>
+<p>Blame language sounds reasonable at first. "Bob forgot to run the migration script." "Sarah didn't check the logs." "The QA team missed the bug."</p>
+<p>But here's the problem: when you blame people, they get defensive. They hide mistakes. They stop speaking up in meetings. And the same incident happens again six months later — just with different people involved.</p>
+<p>I've seen this play out at three different companies. The ones that used blame language had the same outages on repeat. The ones that focused on systems? They actually got better.</p>
+<p>The goal isn't to assign fault. It's to understand the chain of events so you can break it next time.</p>
+<h2>How To Write A Post Mortem Report Without Blame Language</h2>
+<p>Let me walk through the actual process I use. It's based on a framework I picked up from <a href="https://belikenative.com/">BeLikeNative</a> — a resource that focuses on clear, neutral communication in technical writing.</p>
+<h3>1. Start With Objective Facts</h3>
+<p>Before you write anything, gather the timeline. Not opinions — just what happened, when, and in what order.</p>
+<p>Bad: "The deploy went wrong because the team rushed." Good: "At 14:32, a deploy was triggered. At 14:35, error rates spiked to 45%."</p>
+<p>Notice the difference? The first version assigns blame. The second version describes events.</p>
+<p>Write down every timestamp. Every change. Every alert. Stick to observable facts. You can interpret them later.</p>
+<h3>2. Use Neutral Language Throughout</h3>
+<p>This is the hardest part. We naturally want to say "who did what wrong." Instead, focus on "what happened."</p>
+<p>Replace "failed to" with "did not." Replace "ignored" with "did not respond to." Replace "caused" with "contributed to."</p>
+<p>Here's an example from an actual post-mortem I wrote:</p>
+<p>Before: "The on-call engineer failed to escalate the alert within 15 minutes." After: "The alert was not escalated within 15 minutes. The on-call engineer was handling another incident at the time."</p>
+<p>The second version tells the same story without making anyone look bad. And it reveals the real issue: the engineer was overloaded.</p>
+<h3>3. Use the Five Whys to Find Root Causes</h3>
+<p>The Five Whys technique is simple. Start with the incident and ask "why" five times. But here's the trick: don't stop at human error.</p>
+<p>Let me show you an example:</p>
+<ul><li>Incident: Database went down.</li><li>Why? A query locked the table.</li><li>Why? The query was running during peak hours.</li><li>Why? There was no check for query timing.</li><li>Why? The deployment pipeline didn't include a timing review step.</li><li>Why? No one had documented the requirement.</li></ul>
+<p>See what happened? The root cause wasn't "Bob wrote a bad query." It was "the deployment pipeline lacked a timing review." That's a system problem, not a person problem.</p>
+<h3>4. Write Action Items That Fix Systems</h3>
+<p>Every action item should address a system gap, not a person's behavior. If your action item is "remind the team to be more careful," you haven't fixed anything.</p>
+<p>Good action items look like:</p>
+<ul><li>Add a pre-deploy check for query timing.</li><li>Create an alert for table locks.</li><li>Document the deployment timing policy.</li><li>Add a review step in the CI pipeline.</li></ul>
+<p>Bad action items look like:</p>
+<ul><li>Tell engineers to be more careful.</li><li>Remind everyone to check their queries.</li><li>Have a meeting about best practices.</li></ul>
+<p>Action items should be specific, measurable, and system-focused. If you can't write them as a checklist, they're not action items.</p>
+<h3>5. Review the Report as a Team</h3>
+<p>Before you publish the post-mortem, review it with everyone involved. Ask them: "Does this accurately describe what happened? Do you feel blamed?"</p>
+<p>I've had engineers tell me, "This part makes me look bad." And I've rewritten it. Every time, the new version was better.</p>
+<p>The review isn't about making everyone happy. It's about making sure the report is accurate and useful. If someone feels blamed, the language is wrong.</p>
+<h2>Common Mistakes to Avoid</h2>
+<p>I've seen a few patterns that trip people up. Watch for these:</p>
+<p>**Mistake 1: Passive voice as a crutch.** Passive voice can help remove blame, but it can also make the report confusing. "The deploy was triggered" is fine. "Mistakes were made" is not. Be specific about what happened.</p>
+<p>**Mistake 2: Skipping context.** If you don't explain why someone made a decision, the report feels incomplete. Include things like "the engineer was handling three other incidents" or "the alert had fired 15 times that week and was being investigated."</p>
+<p>**Mistake 3: Forgetting to celebrate what went right.** Post-mortems aren't just about failures. If someone caught the issue quickly, mention that. If the rollback worked perfectly, say so. This balances the report and reinforces good behaviors.</p>
+<h2>A Template You Can Use</h2>
+<p>Here's the template I use for every post-mortem. Feel free to copy it:</p>
+<p>**Incident Summary:** One paragraph describing what happened and the impact.</p>
+<p>**Timeline:** Bullet points with timestamps. Stick to facts.</p>
+<p>**Root Cause:** One sentence describing the system gap.</p>
+<p>**Five Whys Analysis:** Show the chain of reasoning.</p>
+<p>**What Went Well:** Things that helped mitigate the incident.</p>
+<p>**What Went Wrong:** System gaps that contributed.</p>
+<p>**Action Items:** Specific, measurable changes.</p>
+<h2>Tools That Help</h2>
+<p>Writing neutral language takes practice. I use a few tools to check my work.</p>
+<p>One tool I rely on is the <a href="https://belikenative.com/tools/grammar-checker/">grammar checker</a> from BeLikeNative. It catches blame language and suggests neutral alternatives. It's saved me from sending out reports that would have made people defensive.</p>
+<p>I also run my drafts through a <a href="https://belikenative.com/tools/text-simplifier/">text simplifier</a> to make sure the language is clear. Complex sentences can hide bias, so simpler is better.</p>
+<h2>Final Thoughts</h2>
+<p>Writing a post-mortem without blame language isn't about being nice. It's about being effective. When you fix systems instead of people, incidents stop happening. When you use neutral language, people share more information. When you ask "why" until you find the system gap, you build something that lasts.</p>
+<p>The next time you write a post-mortem, try this approach. Start with facts. Use neutral language. Ask the Five Whys. Write action items that fix systems. And review the report with the team.</p>
+<p>You'll get better results. And your team will thank you.</p>
+<h2>FAQ</h2>
+<p>**Q: What if someone really did make a mistake? Should I still avoid calling them out?**</p>
+<p>A: Yes. Even if someone made a clear error, blaming them doesn't prevent it from happening again. Instead, ask: "What system allowed this mistake to cause an incident?" Maybe they needed a second review. Maybe the process was unclear. Fix the system, and the person's mistake becomes irrelevant.</p>
+<p>**Q: How do I handle a post-mortem where the same person keeps causing incidents?**</p>
+<p>A: That's a pattern, not an incident. Address it separately — in a one-on-one or performance review. The post-mortem should focus on the specific incident and the system gaps. If the same person keeps making errors, the system isn't catching them. That's a system problem too.</p>
+<p>**Q: Can I use passive voice in post-mortems?**</p>
+<p>A: Sparingly. Passive voice can help remove blame, but it can also make the report vague. Use it when the actor isn't important ("the alert was triggered at 14:32") but avoid it when you need to be specific ("the deploy was done by the CI pipeline" is fine; "the report was written" is not — who wrote it?).</p>
+<div class="footer">
+<p>Read the original at <a href="https://belikenative.com/write-post-mortem-report-without-blame-language/">belikenative.com/write-post-mortem-report-without-blame-language</a></p>
+<p><a href="https://belikenative.com">BeLikeNative</a> is a free Chrome extension for real-time grammar checking and writing improvement.</p>
+</div>
+</article>
+</body>
+</html>
